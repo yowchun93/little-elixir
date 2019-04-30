@@ -31,6 +31,12 @@ defmodule Insert do
     [new, old | multiinsertl(new, old, t)]
   end
 
+  # this is the old code which get stuck in infinite loop, notice the recursion has the same
+  # parameter as this function itself, therefore it keeps getting stuck infinite loop.
+  # def multiinsertl(new, old, [old | t]) do
+  #   [new | multiinsert(new, old [ old | t ])]
+  # end
+
   def multiinsertl(new, old, [h|t]) do
     [h | multiinsertl(new, old, t)]
   end

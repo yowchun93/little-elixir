@@ -12,7 +12,6 @@ defmodule Pick do
   # pick(3, [:dog, :monkey, :bird])
   # pick(2, [:monkey, :bird])
   # pick(1, [:bird])
-
   def rempick(1, [h|t]) do
     [h]
   end
@@ -20,8 +19,20 @@ defmodule Pick do
   def rempick(a, [h|t]) do
     [ h | rempick(a-1, t) ]
   end
-
 end
 
 # Pick.pick(4, [:cat, :dog, :monkey, :bird]) |> IO.inspect
 Pick.rempick(3, [:cat, :dog, :monkey, :bird]) |> IO.inspect
+
+
+# Mapping out the Problem Solving Process
+# pick(1, [:cat])
+def pick(1, [h]) do
+  h
+end
+
+# pick(3, [:cat, dog, :human])
+# next thing to do is to reduce the list
+def pick(a, [_|t]) do
+  pick(a-1, t)
+end
